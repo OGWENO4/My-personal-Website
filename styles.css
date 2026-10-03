@@ -397,6 +397,7 @@ h1 span { color: #b7adff; }
 .hero-title-row { display: flex; align-items: center; gap: 17px; }
 .hero-title-row h1 { margin: 0; }
 .hero-avatar { flex: 0 0 auto; width: 76px; height: 76px; border: 3px solid #b7adff; border-radius: 50%; object-fit: cover; background: #242744; box-shadow: 0 0 0 5px #a99cff20; }
+.profile-avatar { display: block; padding: 0; border: 1px solid #746db0; object-fit: cover; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
 .hero-actions .button { min-height: 35px; }
 .projects-section { margin: 37px 0 0; scroll-margin-top: 24px; }
