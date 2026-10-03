@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="Leonard’s HQ: a personal portfolio, learning journal, and home for projects and ideas.">
+  <meta name="author" content="Leonard Hildeberts">
+  <meta property="og:title" content="Leonard’s HQ">
+  <meta property="og:description" content="Learning, building, and working toward a future in software engineering.">
+  <title>Leonard’s HQ — Learning, building, becoming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Leonard’s HQ home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-name">Leonard’s <span class="brand-period">HQ</span></span>
+      </a>
+
+      <div class="workspace-label">LEONARD’S SPACE</div>
+      <nav class="navigation" aria-label="Main navigation">
+        <button class="nav-link is-active" data-filter="all"><span class="nav-icon">◫</span><span>Overview</span></button>
+        <button class="nav-link" data-filter="repository"><span class="nav-icon nav-github">⌘</span><span>Repositories</span><span class="nav-count" id="repo-count">0</span></button>
+        <button class="nav-link" data-filter="project"><span class="nav-icon">◈</span><span>Projects</span><span class="nav-count" id="project-count">0</span></button>
+        <button class="nav-link" data-filter="note"><span class="nav-icon">▤</span><span>Notes</span><span class="nav-count" id="note-count">0</span></button>
+        <button class="nav-link" data-filter="resource"><span class="nav-icon">↗</span><span>Resources</span><span class="nav-count" id="resource-count">0</span></button>
+        <a class="nav-link nav-anchor" href="#about"><span class="nav-icon">◎</span><span>About me</span></a>
+        <a class="nav-link nav-anchor" href="#contact"><span class="nav-icon">✉</span><span>Contact</span></a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="storage-card">
+          <div class="storage-icon">✳</div>
+          <div class="storage-copy"><strong>Your space, your rules.</strong><span>Your items stay in this browser.</span></div>
+          <span class="privacy-dot" aria-label="Stored locally"></span>
+        </div>
+        <button class="nav-link sidebar-action" id="export-button"><span class="nav-icon">↓</span><span>Export your data</span></button>
+        <button class="nav-link sidebar-action" id="import-button"><span class="nav-icon">↑</span><span>Import a backup</span></button>
+        <input class="visually-hidden" id="import-file" type="file" accept="application/json,.json">
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">Y</div>
+          <div class="profile-copy"><strong>Leonard</strong><span>Aspiring software engineer</span></div>
+          <span class="profile-menu" aria-hidden="true">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="local-status"><span></span> Saved locally</span>
+          <button class="button button-primary top-add" id="top-add-button"><span>＋</span> Add new</button>
+        </div>
+      </header>
+
+      <section class="page-content">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL HQ</div>
+            <h1 id="page-title">Leonard’s HQ,<br><span>learning, building, becoming.</span></h1>
+            <p class="page-intro">I’m Leonard, an aspiring software engineer. This is where I share what I’m learning and keep the things I’m building.</p>
+          </div>
+          <div class="welcome-illustration" aria-hidden="true">
+            <div class="illustration-orbit orbit-one"></div><div class="illustration-orbit orbit-two"></div>
+            <div class="illustration-core"><span>L</span></div><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span><span class="orbit-dot dot-three"></span>
+          </div>
+        </div>
+
+        <div class="stats-grid" aria-label="Workspace summary">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-violet">⌘</span><span class="stat-label">Repositories</span><span class="stat-trend">↗</span></div><strong class="stat-number" id="stat-repositories">0</strong><span class="stat-caption">Your code, collected</span></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-orange">◈</span><span class="stat-label">Projects</span><span class="stat-trend">↗</span></div><strong class="stat-number" id="stat-projects">0</strong><span class="stat-caption">Things in motion</span></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon icon-blue">▤</span><span class="stat-label">Notes & ideas</span><span class="stat-trend">↗</span></div><strong class="stat-number" id="stat-notes">0</strong><span class="stat-caption">Thoughts worth keeping</span></article>
+          <article class="stat-card stat-highlight"><div class="stat-top"><span class="stat-icon icon-green">✳</span><span class="stat-label">Your collection</span></div><strong class="stat-number" id="stat-total">0 <small>items</small></strong><span class="stat-caption">And room for what’s next.</span><span class="highlight-sparkle" aria-hidden="true">✳</span></article>
+        </div>
+
+        <section class="collection-section" aria-labelledby="collection-title">
+          <div class="section-heading">
+            <div><div class="section-kicker">THE GOOD STUFF</div><h2 id="collection-title">Your collection <span id="visible-count">0</span></h2></div>
+            <div class="collection-tools">
+              <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search your space..." aria-label="Search your workspace"><kbd>Ctrl K</kbd></label>
+              <label class="sort-select-label"><span class="visually-hidden">Sort items</span><select id="sort-select"><option value="newest">Recently added</option><option value="oldest">Oldest first</option><option value="az">Name A–Z</option></select></label>
+            </div>
+          </div>
+          <div class="filter-row" role="group" aria-label="Filter collection">
+            <button class="filter-chip is-selected" data-filter="all">Everything <span id="filter-all-count">0</span></button>
+            <button class="filter-chip" data-filter="repository">Repositories <span id="filter-repository-count">0</span></button>
+            <button class="filter-chip" data-filter="project">Projects <span id="filter-project-count">0</span></button>
+            <button class="filter-chip" data-filter="note">Notes <span id="filter-note-count">0</span></button>
+            <button class="filter-chip" data-filter="resource">Resources <span id="filter-resource-count">0</span></button>
+            <button class="favorites-filter" id="favorites-filter" aria-pressed="false"><span>♡</span> Favorites</button>
+          </div>
+          <div class="item-grid" id="item-grid"></div>
+          <div class="empty-state" id="empty-state">
+            <div class="empty-art" aria-hidden="true"><span class="empty-art-back"></span><span class="empty-art-front">✳</span><span class="empty-art-spark">✦</span></div>
+            <h3 id="empty-title">A little space for big things.</h3>
+            <p id="empty-description">Save your first repository, project, note, or resource. Everything stays right here in your browser.</p>
+            <button class="button button-primary" id="empty-add-button">＋ Add your first item</button>
+          </div>
+        </section>
+        <section class="profile-section" id="about" aria-labelledby="about-title">
+          <div class="profile-section-heading">
+            <div><div class="section-kicker">A LITTLE ABOUT ME</div><h2 id="about-title">Learning by building.</h2></div>
+            <span class="about-mark" aria-hidden="true">L.</span>
+          </div>
+          <p class="about-intro">I’m <strong>Leonard Hildeberts</strong>, from <strong>Oyugis town, Homa Bay, Kenya</strong>. I’m learning how to turn ideas into useful things with code, growing my skills in <strong>HTML, CSS, JavaScript, and Python</strong> one project and one new concept at a time.</p>
+          <div class="about-grid">
+            <article class="about-card learning-card">
+              <span class="about-card-icon">⌘</span>
+              <div><h3>What I’m learning</h3><p>Building the foundations of the web with HTML, CSS, and JavaScript, while exploring Python and problem-solving.</p></div>
+              <div class="skill-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span></div>
+            </article>
+            <article class="about-card goal-card">
+              <span class="about-card-icon">↗</span>
+              <div><h3>Where I’m headed</h3><p>My goal is to become a software engineer: someone who can design, build, and improve software that helps people.</p></div>
+              <span class="goal-path"><span>Curious beginner</span><i></i><strong>Software engineer</strong></span>
+            </article>
+          </div>
+          <article class="mentor-card">
+            <div class="mentor-avatar" aria-hidden="true">MK</div>
+            <div class="mentor-copy"><span class="section-kicker">A TEACHER WHO INSPIRED ME</span><h3>Thank you, Mirion Kiboma.</h3><p>Mirion taught me visual programming and helped spark my interest in creating with technology.</p></div>
+            <div class="mentor-links">
+              <a href="mailto:mirionkiboma@gmail.com">mirionkiboma@gmail.com <span aria-hidden="true">↗</span></a>
+              <a href="mailto:kibomamirion@gmail.com">kibomamirion@gmail.com <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </section>
+
+        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+          <div class="contact-copy">
+            <div class="section-kicker">LET’S TALK</div>
+            <h2 id="contact-title">Have an idea or just want to say hello?</h2>
+            <p>I’d love to hear from you. Send me a message and I’ll get back to you.</p>
+            <a class="button button-primary contact-button" href="mailto:hildebertsleonard@gmail.com">Email Leonard <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="contact-email" href="mailto:hildebertsleonard@gmail.com"><span class="contact-email-icon" aria-hidden="true">✉</span><span><small>MY EMAIL</small><strong>hildebertsleonard@gmail.com</strong></span><span class="contact-arrow" aria-hidden="true">↗</span></a>
+        </section>
+
+        <footer class="page-footer"><span>Designed by Leonard Hildeberts · Oyugis, Homa Bay, Kenya</span><span><span class="footer-dot"></span> Workspace items are saved in this browser</span></footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="item-modal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description">
+      <div class="modal-heading"><div><div class="section-kicker">MAKE IT YOURS</div><h2 id="modal-title">Add to your space</h2><p id="modal-description">Save something you want to come back to.</p></div><button class="modal-close" id="modal-close" aria-label="Close dialog">×</button></div>
+      <form id="item-form">
+        <label class="form-field"><span>What are we saving? <b>*</b></span><input name="title" id="item-title" required maxlength="100" placeholder="e.g. My next big idea"></label>
+        <div class="form-row"><label class="form-field"><span>Type <b>*</b></span><select name="type" id="item-type" required><option value="repository">Repository</option><option value="project">Project</option><option value="note">Note / idea</option><option value="resource">Resource</option></select></label><label class="form-field"><span>Tag</span><input name="tag" id="item-tag" maxlength="24" placeholder="e.g. Design"></label></div>
+        <label class="form-field"><span>Link <span class="optional-label">optional</span></span><input name="url" id="item-url" type="url" maxlength="2048" placeholder="https://..."></label>
+        <label class="form-field"><span>A few details <span class="optional-label">optional</span></span><textarea name="description" id="item-description" rows="3" maxlength="500" placeholder="What should you remember about this?"></textarea></label>
+        <div class="modal-error" id="form-error" role="alert" hidden></div>
+        <div class="modal-footer"><button type="button" class="button button-quiet" id="cancel-button">Cancel</button><button class="button button-primary" id="save-item-button" type="submit"><span>＋</span> Save to collection</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
